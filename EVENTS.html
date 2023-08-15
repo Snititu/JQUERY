@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Crash Course | Events</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>JQuery Crash Course</h1>
+    </header>
+
+    <div id="container">
+      <h3>Mouse Events</h3>
+      <button id="btn1" class="btnclass">Button 1</button>
+      <button id="btn2">Button 2</button>
+      <p class="para1">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
+        sit repellat explicabo adipisci consequuntur inventore doloremque
+        cupiditate consequatur vitae debitis, rem excepturi sint veniam eligendi
+        non? Doloremque rerum impedit iusto!
+      </p>
+      <h1 id="Coords"></h1>
+      <form id="form">
+        <label for="">Name</label><br />
+        <input type="text" id="name" name="name" />
+        <br />
+        <label for="">Email</label><br />
+        <input type="text" id="email" name="email" />
+        <br />
+        <label for="">Gender</label>
+        <select name="gender" id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <br />
+        <input type="submit" value="submit" />
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // $("#btn1").click(function () {
+        //   alert("Button Clicked.");
+        // });
+        // $("#btn1").on("click", function () {
+        //   alert("Button Clicked");
+        // });
+        /*$("#btn1").on("click", function () {
+          //$(".para1").hide();
+          $(".para1").toggle();
+        });
+
+        $("#btn2").on("click", function () {
+          $(".para1").show();
+        });
+
+        $("#btn1").dblclick(function () {
+          $(".para1").toggle();
+        });
+
+        $("#btn1").on("mouseenter",function () {
+          $(".para1").toggle();
+        });
+        $("#btn1").on("mouseleave",function () {
+          $(".para1").toggle();
+        });
+
+        $("#btn1").on("mousemove",function () {
+          $(".para1").toggle();
+        });
+
+        $("#btn1").on("mousedown", function () {
+          $(".para1").toggle();
+        });
+
+        $("#btn1").on("mouseup", function () {
+          $(".para1").toggle();
+        });
+
+        $("#btn1").click(function (e) {
+          //alert("Button Clicked.");
+          //alert(e.currentTarget.id);
+          //alert(e.currentTarget.outerHTML);
+          //alert(e.currentTarget.className);
+        });
+        "#btn1".on("mousemove", function () {
+          $("#Coords").append("Coords: Y:" + e.clientY + "X: " + e.clientX);
+        });
+
+        $("input").focus(function () {
+          //alert("focus");
+          $(this).css("background", "pink");
+        });
+
+        $("input").blur(function () {
+          //alert("focus");
+          $(this).css("background", "white");
+        });
+
+        $("input").keyup(function () {
+          console.log("e.target.value");
+        });*/
+
+        $("select#gender").change(function (e) {
+          alert(e.target.value);
+        });
+
+        $("#form").submit(function (e) {
+          e.preventDefault();
+          var name = $("input#name").val();
+          console.log("name");
+        });
+      });
+    </script>
+  </body>
+</html>

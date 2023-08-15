@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Crash Course</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>JQuery Crash Course| AJAX</h1>
+    </header>
+
+    <div id="result"></div>
+    <ul id="users"></ul>
+
+    <script>
+      $(document).ready(function () {
+        $("#result").load("test.html", function (responseTxt, statusTxt, xhr) {
+          if (statusTxt == "success") {
+            alert("It went fine");
+          } else if (statusTxt == "error") {
+            alert("Error: " + xhr.statusText);
+          }
+        });
+
+        $.get("test.html", function (data) {
+          $("#result").html(data);
+        });
+
+        $.getJSON("users.json", function (data) {
+          $.each(data, function (i, user) {
+            $("ul#users").append("<li>" + user.firstName + "</li>");
+          });
+        });
+
+        $.ajax({
+          method: "GET",
+          url: "https://jsonplaceholder.typicode.com/posts",
+          dataType: "json",
+        }).done(function (data) {
+          console.log(data);
+          $.map(data, function (post, i) {
+            $("#result").append(
+              "<h3>" + post.title + "</h3><p>" + post.body + "</p>"
+            );
+          });
+        });
+
+        $("#btn0").click(function () {
+          alert("Button Clicked");
+        });
+
+        $("#postForm").submit(function (e) {
+          e.preventDefault();
+
+          var title = $("#title").val();
+          var body = $("#body").val();
+          var url = $(this).attr("action");
+
+          $.post(url, { title: title, body: body }).done(function (data) {
+            console.log("Post Saved");
+            console.log(data);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
